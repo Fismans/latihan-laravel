@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    <a href=""
+    /* CSS untuk menyoroti item pada menu navigasi */
+    .nav-item {
+      margin: 10px;
+      padding: 5px;
+    }
+    .active {
+      background-color: #007bff;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div id="menu">
+  <ul>
+    <li class="nav-item"><a href="#section1">Section 1</a></li>
+    <li class="nav-item"><a href="#section2">Section 2</a></li>
+    <li class="nav-item"><a href="#section3">Section 3</a></li>
+  </ul>
+</div>
+
+<div id="section1" style="height: 500px;">Section 1</div>
+<div id="section2" style="height: 500px;">Section 2</div>
+<div id="section3" style="height: 500px;">Section 3</div>
+
+<script>
+// JavaScript untuk mengaktifkan Scrollspy
+document.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener('scroll', function() {
+    var sections = document.querySelectorAll('div[id^="section"]');
+    var menuItems = document.querySelectorAll('.nav-item');
+
+    sections.forEach(function(section, index) {
+      var rect = section.getBoundingClientRect();
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        menuItems[index].classList.add("active");
+      } else {
+        menuItems[index].classList.remove("active");
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
